@@ -23,7 +23,7 @@ def load_chain():
         allow_dangerous_deserialization=True
     )
 
-    retriever = db.as_retriever(search_kwargs={"k": 4})
+    retriever = db.as_retriever(search_kwargs={"k": 2})
 
     llm = ChatGroq(
         model_name="llama-3.3-70b-versatile",
@@ -32,9 +32,10 @@ def load_chain():
     )
 
     memory = ConversationBufferWindowMemory(
-        k=5,
         memory_key="chat_history",
-        return_messages=True
+        return_messages=True,
+        output_key="answer",
+        k=5,
     )
 
     chain = ConversationalRetrievalChain.from_llm(
