@@ -1,0 +1,9 @@
+venv/
+.venv/
+__pycache__/
+.env
+*.pt
+*.bin
+*.pkl
+faiss_index/
+chromadb/

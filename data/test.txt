@@ -1,0 +1,30 @@
+Retrieval-Augmented Generation (RAG) is a method to improve the performance of language models by combining information retrieval with generation.
+
+RAG works by:
+1. Retrieving relevant documents or chunks from a vector store.
+2. Using embeddings to find the most similar content to the user query.
+3. Feeding this retrieved context into a language model (LLM) like Ollama or OpenAI models.
+4. Generating answers that are grounded in actual documents rather than hallucinated.
+
+This allows applications like:
+- Question answering over PDFs, docs, or web content.
+- Summarization of large documents.
+- Chatbots that know your company’s internal documents.
+
+Advantages of RAG:
+- Reduces hallucinations in generated answers.
+- Scales to large knowledge bases.
+- Can combine multiple sources of information.
+
+Example use-case:
+A user uploads a policy document. Later, they ask: "What is the vacation policy?" RAG retrieves the relevant section and the LLM answers based on actual content.
+
+Implementation details:
+- Documents are split into chunks (e.g., 500 words each).
+- Each chunk is converted to an embedding vector using a model like sentence-transformers/all-MiniLM-L6-v2.
+- Chunks and embeddings are stored in a vector database like Chroma.
+- When a query comes in, the query is embedded and the most similar chunks are retrieved.
+- Retrieved chunks are sent to the LLM for generating the final answer.
+
+This approach allows a flexible and scalable system for knowledge-grounded AI chatbots.
+EOL
